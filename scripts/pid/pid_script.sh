@@ -45,7 +45,7 @@ source /apps/root/6.18.04/setroot_CUE.bash
 cd ${REPLAYPATH}/UTIL_KAONLT/scripts/pid/src/
 python3 pid_eff.py ${RUNNUMBER} ${MAXEVENTS}
 
-cd ${REPLAYPATH}/UTIL_KAONLT/scripts/pid/OUTPUTS/
+cd ${REPLAYPATH}/UTIL_KAONLT/OUTPUT/Analysis/PID
 convert noID_hms_cer_${RUNNUMBER}.png PID_hms_cer_${RUNNUMBER}.png noID_hms_cal_${RUNNUMBER}.png PID_hms_cal_${RUNNUMBER}.png noID_shms_hgcer_${RUNNUMBER}.png PID_shms_hgcer_${RUNNUMBER}.png noID_shms_aero_${RUNNUMBER}.png PID_shms_aero_${RUNNUMBER}.png noID_shms_cal_${RUNNUMBER}.png PID_shms_cal_${RUNNUMBER}.png pid_plots_${RUNNUMBER}.pdf
 rm -rf *.png
 

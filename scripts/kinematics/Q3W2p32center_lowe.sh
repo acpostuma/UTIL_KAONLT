@@ -38,14 +38,14 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     eval '"$SCRIPTPATH" $RunPrefix $runNum -1'
 done < "$RunListFile"
 sleep 5
-cd "${UTILPATH}/scripts/kaonyield/OUTPUT"
+cd "${UTILPATH}/OUTPUT/Analysis/KaonLT"
 KINFILE="Q3W2p32center_lowe.root"
 hadd ${KINFILE} ${RootName}
 
-if [ ! -f "${UTILPATH}/scripts/kaonyield/OUTPUT/Q3W2p32center_lowe_Kaons.root" ]; then
+if [ ! -f "${UTILPATH}/OUTPUT/Analysis/KaonLT/Q3W2p32center_lowe_Kaons.root" ]; then
     root -b -l -q "${UTILPATH}/scripts/kaonyield/PlotKaonPhysics.C(\"${KINFILE}\", \"Q3W2p32center_lowe_Kaons\")"
-elif [ ! -f "${UTILPATH}/scripts/kaonyield/OUTPUT/Q3W2p32center_lowe_Kaons.pdf" ]; then
+elif [ ! -f "${UTILPATH}/OUTPUT/Analysis/KaonLT/Q3W2p32center_lowe_Kaons.pdf" ]; then
     root -b -l -q "${UTILPATH}/scripts/kaonyield/PlotKaonPhysics.C(\"${KINFILE}\", \"Q3W2p32center_lowe_Kaons\")"
-else echo "Kaon plots already found in - ${UTILPATH}/scripts/kaonyield/OUTPUT/Q3W2p32center_lowe_Kaons.root and .pdf - Plotting macro skipped"
+else echo "Kaon plots already found in - ${UTILPATH}/OUTPUT/Analysis/KaonLT/Q3W2p32center_lowe_Kaons.root and .pdf - Plotting macro skipped"
 fi
 exit 0

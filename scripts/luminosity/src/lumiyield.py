@@ -35,10 +35,10 @@ elif ("trottar" in HOST[1]):
 
 print("Running as %s on %s, hallc_replay_lt path assumed as %s" % (USER[1], HOST[1], REPLAYPATH))
 
-filename = "%s/UTIL_KAONLT/scripts/luminosity/OUTPUTS/lumi_data.csv" % REPLAYPATH
-rootName = "%s/UTIL_KAONLT/ROOTfiles/coin_replay_Full_Lumi_%s_%s.root" % (REPLAYPATH,runNum,MaxEvent)
+filename = "%s/UTIL_KAONLT/OUTPUT/Analysis/Lumi/lumi_data.csv" % REPLAYPATH
+rootName = "%s/UTIL_KAONLT/ROOTfiles/Analysis/Lumi/coin_replay_Full_Lumi_%s_%s.root" % (REPLAYPATH,runNum,MaxEvent)
 # report = "/u/group/c-kaonlt/USERS/%s/kaonlt/REPORT_OUTPUT/coin_replay_Full_Lumi_%s_%s.report" % (USER[1],runNum,MaxEvent)
-report = "%s/UTIL_KAONLT/REPORT_OUTPUT/replay_coin_Lumi_%s_%s.report" % (REPLAYPATH,runNum,MaxEvent)
+report = "%s/UTIL_KAONLT/REPORT_OUTPUT/Analysis/Lumi/replay_coin_Lumi_%s_%s.report" % (REPLAYPATH,runNum,MaxEvent)
 
 thres_curr = 2.5
 # thres_curr = 10.0

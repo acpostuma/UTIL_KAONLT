@@ -33,7 +33,7 @@ elif ("lark.phys.uregina" in HOST[1]):
     REPLAYPATH = "/home/%s/work/JLab/hallc_replay_lt" % USER[1]
 
 # Add more path setting as needed in a similar manner
-OUTPATH = "%s/UTIL_KAONLT/scripts/CoinTimePeak/OUTPUT" % REPLAYPATH
+OUTPATH = "%s/UTIL_KAONLT/OUTPUT/Analysis/KaonLT" % REPLAYPATH
 PARAMPATH = "%s/UTIL_KAONLT/DB/PARAM" % REPLAYPATH
 CUTPATH = "%s/UTIL_KAONLT/DB/CUTS" % REPLAYPATH
 
@@ -61,6 +61,7 @@ for KinLine in KinListf:
     #print(KinLineNum) # Testing output
     KinLine=KinLine.rstrip();
     KinFile = "%s/%s_Output.csv" % (OUTPATH, KinLine)
+    print(KinFile)
     # Check the corresponding output .csv file exists, if it does, open it
     if (path.exists(KinFile) == True and path.isfile(KinFile) == True):
         KinFilef = open(KinFile)
@@ -71,7 +72,7 @@ for KinLine in KinListf:
                 RunParamData = [0] * 10 # Initialise a 10 element array for the param data for each run (line) in the KinFile
                 # Go through output csv line by line, convert each line to an array
                 #KinFileLineNum += 1
-                KinFileLine=KinFileLine.rstrip() # Remoe trailing spaces
+                KinFileLine=KinFileLine.rstrip() # Remove trailing spaces
                 KinFileData=KinFileLine.split(",") # Convert csv row to an array
                 RunParamData[0]=int(KinFileData[0]) # Run number
                 #RunParamData[1]=int(KinFileData[0])+1

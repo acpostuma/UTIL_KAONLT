@@ -41,7 +41,7 @@ elif [[ "${HOSTNAME}" = *"trottar"* ]]; then
     REPLAYPATH="/home/trottar/Analysis/hallc_replay_lt"
 fi
 
-cd ${REPLAYPATH}/
+cd ${REPLAYPATH}
 #   Load params for BCM
 #   const char* CurrentFileNamePattern = "PARAM/HMS/BCM/CALIB/bcmcurrent_%d.param";
 #   gHcParms->Load(Form(CurrentFileNamePattern, RunNumber));
@@ -51,11 +51,11 @@ echo -e "\n\nStarting Scaler Replay Script\n\n"
 cd CALIBRATION/bcm_current_map/
 root -b<<EOF
 .L ScalerCalib.C+
-.x run.C("../../ROOTfiles/coin_replay_scalers_${RUNNUMBER}_${MAXEVENTS}.root")
+.x run.C("${REPLAYPATH}/ROOTfiles/Scalers/coin_replay_scalers_${RUNNUMBER}_${MAXEVENTS}.root")
 EOF
 
-mv bcmcurrent_$RUNNUMBER.param ../../PARAM/HMS/BCM/CALIB/bcmcurrent_$RUNNUMBER.param
-cd ../../
+mv bcmcurrent_$RUNNUMBER.param $REPLAYPATH/PARAM/HMS/BCM/CALIB/bcmcurrent_$RUNNUMBER.param
+cd $REPLAYPATH
 
 echo -e "\n\nStarting Replay Script\n\n"
 ./hcana -q "${REPLAYPATH}/UTIL_KAONLT/scripts/luminosity/src/replay/replay_lumi_coin_offline.C($RUNNUMBER,$MAXEVENTS)"

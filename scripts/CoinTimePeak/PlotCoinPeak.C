@@ -32,15 +32,15 @@ void PlotCoinPeak(string InFilename = "", string OutFilename = "")
   // Set paths depending on system you're running on
   if(Hostname.Contains("farm")){
     Replaypath = "/group/c-kaonlt/USERS/"+User+"/hallc_replay_lt";
-    Outpath = Replaypath+"/UTIL_KAONLT/scripts/CoinTimePeak/OUTPUT";
+    Outpath = Replaypath+"/UTIL_KAONLT/OUTPUT/Analysis/KaonLT";
   }
   else if(Hostname.Contains("qcd")){
     Replaypath = "/group/c-kaonlt/USERS/"+User+"/hallc_replay_lt";
-    Outpath = Replaypath+"/UTIL_KAONLT/scripts/CoinTimePeak/OUTPUT";
+    Outpath = Replaypath+"/UTIL_KAONLT/OUTPUT/Analysis/KaonLT";
   }
   else if (Hostname.Contains("phys.uregina.ca")){
     Replaypath = "/home/"+User+"/work/JLab/hallc_replay_lt";
-    Outpath = Replaypath+"/UTIL_KAONLT/scripts/CoinTimePeak/OUTPUT";
+    Outpath = Replaypath+"/UTIL_KAONLT/OUTPUT/Analysis/KaonLT";
   }
   // Add more as needed for your own envrionment
   if(InFilename == "") {
@@ -70,17 +70,17 @@ void PlotCoinPeak(string InFilename = "", string OutFilename = "")
   // Set branch address -> Need this to ensure event info is entangled correctly for 2D plots
   Double_t CT_pions; Pions->SetBranchAddress("CTime_ePiCoinTime_ROC1", &CT_pions);
   Double_t CT_kaons; Kaons->SetBranchAddress("CTime_eKCoinTime_ROC1", &CT_kaons);
-  Double_t CT_protons; Protons->SetBranchAddress("CTime_eKCoinTime_ROC1", &CT_protons);
+  Double_t CT_protons; Protons->SetBranchAddress("CTime_epCoinTime_ROC1", &CT_protons);
 
   // Define Histograms
-  TH1D *h1_CT_Pions = new TH1D("h1_CT_Pions", "Pions CT - All events after PID cuts; Time (ns)", 240, 10, 70); 
-  TH1D *h1_CT_Kaons = new TH1D("h1_CT_Kaons", "Kaons CT - All events after PID cuts; Time (ns)", 240, 10, 70); 
-  TH1D *h1_CT_Protons = new TH1D("h1_CT_Protons", "Protons CT - All events after PID cuts; Time (ns)", 240, 10, 70); 
+  TH1D *h1_CT_Pions = new TH1D("h1_CT_Pions", "Pions CT - All events after PID cuts; Time (ns)", 480, -60, 60); 
+  TH1D *h1_CT_Kaons = new TH1D("h1_CT_Kaons", "Kaons CT - All events after PID cuts; Time (ns)", 480, -60, 60); 
+  TH1D *h1_CT_Protons = new TH1D("h1_CT_Protons", "Protons CT - All events after PID cuts; Time (ns)", 480, -60, 60); 
 
   // For 1D histos, can easily create directly from the corresponding branch
   Pions->Draw("CTime_ePiCoinTime_ROC1 >> h1_CT_Pions", "", "goff"); 
   Kaons->Draw("CTime_eKCoinTime_ROC1 >> h1_CT_Kaons", "", "goff"); 
-  Protons->Draw("CTime_eKCoinTime_ROC1 >> h1_CT_Protons", "", "goff"); 
+  Protons->Draw("CTime_epCoinTime_ROC1 >> h1_CT_Protons", "", "goff"); 
 
   Double_t PionMaxEnt=h1_CT_Pions->GetBinContent(h1_CT_Pions->GetMaximumBin());
   Double_t PionMaxVal=h1_CT_Pions->GetBinCenter(h1_CT_Pions->GetMaximumBin());
