@@ -153,56 +153,13 @@ def make_cutDict(cut,inputDict=None):
         
     return inputDict
 
-cutDict = make_cutDict("coin_epi_cut_all")
-cutDict = make_cutDict("coin_epi_cut_prompt", cutDict)
-cutDict = make_cutDict("coin_epi_cut_rand", cutDict)
-cutDict = make_cutDict("coin_epi_cut_all_RF", cutDict)
-cutDict = make_cutDict("coin_epi_cut_prompt_RF", cutDict)
-cutDict = make_cutDict("coin_epi_cut_rand_RF", cutDict)
-cutDict = make_cutDict("coin_ek_cut_all", cutDict)
+cutDict = make_cutDict("coin_ek_cut_all")
 cutDict = make_cutDict("coin_ek_cut_prompt", cutDict)
 cutDict = make_cutDict("coin_ek_cut_rand", cutDict)
 cutDict = make_cutDict("coin_ek_cut_all_RF", cutDict)
 cutDict = make_cutDict("coin_ek_cut_prompt_RF", cutDict)
 cutDict = make_cutDict("coin_ek_cut_rand_RF", cutDict)
-cutDict = make_cutDict("coin_ep_cut_all", cutDict)
-cutDict = make_cutDict("coin_ep_cut_prompt", cutDict)
-cutDict = make_cutDict("coin_ep_cut_rand", cutDict)
-cutDict = make_cutDict("coin_ep_cut_all_RF", cutDict)
-cutDict = make_cutDict("coin_ep_cut_prompt_RF", cutDict)
-cutDict = make_cutDict("coin_ep_cut_rand_RF", cutDict)
 c = klt.pyPlot(REPLAYPATH,cutDict)
-
-def coin_pions(): 
-    # Define the array of arrays containing the relevant HMS and SHMS info
-    NoCut_COIN_Pions = [H_gtr_beta, H_gtr_xp, H_gtr_yp, H_gtr_dp, H_cal_etotnorm, H_cal_etottracknorm, H_cer_npeSum, CTime_ePiCoinTime_ROC1, P_RF_tdcTime, P_hod_fpHitsTime, P_gtr_beta, P_gtr_xp, P_gtr_yp, P_gtr_p, P_gtr_dp, P_cal_etotnorm, P_cal_etottracknorm, P_aero_npeSum, P_aero_xAtAero, P_aero_yAtAero, P_hgcer_npeSum, P_hgcer_xAtCer, P_hgcer_yAtCer, MMpi, MMK, MMp, H_RF_Dist, P_RF_Dist, Q2, W, epsilon, MandelT, MandelU, ph_q]
-    Uncut_COIN_Pions = [(HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTPi, RF, HodStart, PiBeta, Pixp, Piyp, PiP, PiDel, PiCal, PiCalTrack, PiAero, PiAeroX, PiAeroY, PiHGC, PiHGCX, PiHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) for (HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTPi, RF, HodStart, PiBeta, Pixp, Piyp, PiP, PiDel, PiCal, PiCalTrack, PiAero, PiAeroX, PiAeroY, PiHGC, PiHGCX, PiHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) in zip(*NoCut_COIN_Pions)] 
-
-    # Create array of arrays of pions after cuts, all events, prompt and random
-    Cut_COIN_Pions_tmp = NoCut_COIN_Pions
-    Cut_COIN_Pions_all_tmp = []
-    Cut_COIN_Pions_prompt_tmp = []
-    Cut_COIN_Pions_rand_tmp = []
-
-    for arr in Cut_COIN_Pions_tmp:
-        Cut_COIN_Pions_all_tmp.append(c.add_cut(arr, "coin_epi_cut_all_RF"))
-        Cut_COIN_Pions_prompt_tmp.append(c.add_cut(arr, "coin_epi_cut_prompt_RF"))
-        Cut_COIN_Pions_rand_tmp.append(c.add_cut(arr, "coin_epi_cut_rand_RF"))
-
-    Cut_COIN_Pions_all = [(HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTPi, RF, HodStart, PiBeta, Pixp, Piyp, PiP, PiDel, PiCal, PiCalTrack, PiAero, PiAeroX, PiAeroY, PiHGC, PiHGCX, PiHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) for (HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTPi, RF, HodStart, PiBeta, Pixp, Piyp, PiP, PiDel, PiCal, PiCalTrack, PiAero, PiAeroX, PiAeroY, PiHGC, PiHGCX, PiHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) in zip(*Cut_COIN_Pions_all_tmp)]
-
-    Cut_COIN_Pions_prompt = [(HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTPi, RF, HodStart, PiBeta, Pixp, Piyp, PiP, PiDel, PiCal, PiCalTrack, PiAero, PiAeroX, PiAeroY, PiHGC, PiHGCX, PiHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) for (HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTPi, RF, HodStart, PiBeta, Pixp, Piyp, PiP, PiDel, PiCal, PiCalTrack, PiAero, PiAeroX, PiAeroY, PiHGC, PiHGCX, PiHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) in zip(*Cut_COIN_Pions_prompt_tmp)]
-
-    Cut_COIN_Pions_random = [(HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTPi, RF, HodStart, PiBeta, Pixp, Piyp, PiP, PiDel, PiCal, PiCalTrack, PiAero, PiAeroX, PiAeroY, PiHGC, PiHGCX, PiHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) for (HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTPi, RF, HodStart, PiBeta, Pixp, Piyp, PiP, PiDel, PiCal, PiCalTrack, PiAero, PiAeroX, PiAeroY, PiHGC, PiHGCX, PiHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) in zip(*Cut_COIN_Pions_rand_tmp)]
-
-    COIN_Pions = {
-        "Uncut_Pion_Events" : Uncut_COIN_Pions,
-        "Cut_Pion_Events_All" : Cut_COIN_Pions_all,
-        "Cut_Pion_Events_Prompt" : Cut_COIN_Pions_prompt,
-        "Cut_Pion_Events_Random" : Cut_COIN_Pions_random,
-        }
-
-    return COIN_Pions
 
 def coin_kaons(): 
     # Define the array of arrays containing the relevant HMS and SHMS info
@@ -250,61 +207,20 @@ def coin_kaons():
 
     return COIN_Kaons
 
-def coin_protons(): 
-    # Define the array of arrays containing the relevant HMS and SHMS info
-    NoCut_COIN_Protons = [H_gtr_beta, H_gtr_xp, H_gtr_yp, H_gtr_dp, H_cal_etotnorm, H_cal_etottracknorm, H_cer_npeSum, CTime_epCoinTime_ROC1, P_RF_tdcTime, P_hod_fpHitsTime, P_gtr_beta, P_gtr_xp, P_gtr_yp, P_gtr_p, P_gtr_dp, P_cal_etotnorm, P_cal_etottracknorm, P_aero_npeSum, P_aero_xAtAero, P_aero_yAtAero, P_hgcer_npeSum, P_hgcer_xAtCer, P_hgcer_yAtCer, MMpi, MMK, MMp, H_RF_Dist, P_RF_Dist, Q2, W, epsilon, MandelT, MandelU, ph_q]
-    Uncut_COIN_Protons = [(HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTp, RF, HodStart, pBeta, pxp, pyp, pP, pDel, pCal, pCalTrack, pAero, pAeroX, pAeroY, pHGC, pHGCX, pHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) for (HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTp, RF, HodStart, pBeta, pxp, pyp, pP, pDel, pCal, pCalTrack, pAero, pAeroX, pAeroY, pHGC, pHGCX, pHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) in zip(*NoCut_COIN_Protons)] 
-
-    # Create array of arrays of pions after cuts, all events, prompt and random
-    Cut_COIN_Protons_tmp = NoCut_COIN_Protons
-    Cut_COIN_Protons_all_tmp = []
-    Cut_COIN_Protons_prompt_tmp =[]
-    Cut_COIN_Protons_rand_tmp =[]
-
-    for arr in Cut_COIN_Protons_tmp:
-        Cut_COIN_Protons_all_tmp.append(c.add_cut(arr, "coin_ep_cut_all_RF"))
-        Cut_COIN_Protons_prompt_tmp.append(c.add_cut(arr, "coin_ep_cut_prompt_RF"))
-        Cut_COIN_Protons_rand_tmp.append(c.add_cut(arr, "coin_ep_cut_rand_RF"))
-
-    Cut_COIN_Protons_all = [(HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTp, RF, HodStart, pBeta, pxp, pyp, pP, pDel, pCal, pCalTrack, pAero, pAeroX, pAeroY, pHGC, pHGCX, pHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) for (HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTp, RF, HodStart, pBeta, pxp, pyp, pP, pDel, pCal, pCalTrack, pAero, pAeroX, pAeroY, pHGC, pHGCX, pHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) in zip(*Cut_COIN_Protons_all_tmp)]
-
-    Cut_COIN_Protons_prompt = [(HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTp, RF, HodStart, pBeta, pxp, pyp, pP, pDel, pCal, pCalTrack, pAero, pAeroX, pAeroY, pHGC, pHGCX, pHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) for (HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTp, RF, HodStart, pBeta, pxp, pyp, pP, pDel, pCal, pCalTrack, pAero, pAeroX, pAeroY, pHGC, pHGCX, pHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) in zip(*Cut_COIN_Protons_prompt_tmp)]
-
-    Cut_COIN_Protons_random = [(HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTp, RF, HodStart, pBeta, pxp, pyp, pP, pDel, pCal, pCalTrack, pAero, pAeroX, pAeroY, pHGC, pHGCX, pHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) for (HBeta, Hxp, Hyp, Hdel, HCal, HCalTrack, HCer, CTp, RF, HodStart, pBeta, pxp, pyp, pP, pDel, pCal, pCalTrack, pAero, pAeroX, pAeroY, pHGC, pHGCX, pHGCY, mm1, mm2, mm3, HRFDist, PRFDist, Kin_Q2, Kin_W, Kin_eps, Kin_t, Kin_u, phq) in zip(*Cut_COIN_Protons_rand_tmp)]
-
-    COIN_Protons = {
-        "Uncut_Proton_Events" : Uncut_COIN_Protons,
-        "Cut_Proton_Events_All" : Cut_COIN_Protons_all,
-        "Cut_Proton_Events_Prompt" : Cut_COIN_Protons_prompt,
-        "Cut_Proton_Events_Random" : Cut_COIN_Protons_random,
-        }
-
-    return COIN_Protons
-
 def main():
-    COIN_Pion_Data = coin_pions()
     COIN_Kaon_Data = coin_kaons()
-    COIN_Proton_Data = coin_protons()
     # This is just the list of branches we use from the initial root file for each dict
     # I don't like re-defining this here as it's very prone to errors if you included (or removed something) earlier but didn't modify it here
     # Should base the branches to include based on some list and just repeat the list here (or call it again directly below)
-    COIN_Pion_Data_Header = ["H_gtr_beta","H_gtr_xp","H_gtr_yp","H_gtr_dp","H_cal_etotnorm","H_cal_etottracknorm","H_cer_npeSum","CTime_ePiCoinTime_ROC1","P_RF_tdcTime","P_hod_fpHitsTime","P_gtr_beta","P_gtr_xp","P_gtr_yp","P_gtr_p","P_gtr_dp","P_cal_etotnorm","P_cal_etottracknorm","P_aero_npeSum","P_aero_xAtAero","P_aero_yAtAero","P_hgcer_npeSum","P_hgcer_xAtCer","P_hgcer_yAtCer","MMpi","MMK","MMp","H_RF_Dist","P_RF_Dist","Q2","W","epsilon","MandelT","MandelU","ph_q"]
     COIN_Kaon_Data_Header = ["H_gtr_beta","H_gtr_xp","H_gtr_yp","H_gtr_dp","H_cal_etotnorm","H_cal_etottracknorm","H_cer_npeSum","CTime_eKCoinTime_ROC1","P_RF_tdcTime","P_hod_fpHitsTime","P_gtr_beta","P_gtr_xp","P_gtr_yp","P_gtr_p","P_gtr_dp","P_cal_etotnorm","P_cal_etottracknorm","P_aero_npeSum","P_aero_xAtAero","P_aero_yAtAero","P_hgcer_npeSum","P_hgcer_xAtCer","P_hgcer_yAtCer","MMpi","MMK","MMp","H_RF_Dist","P_RF_Dist","Q2","W","epsilon","MandelT","MandelU","ph_q"]
-    COIN_Proton_Data_Header = ["H_gtr_beta","H_gtr_xp","H_gtr_yp","H_gtr_dp","H_cal_etotnorm","H_cal_etottracknorm","H_cer_npeSum","CTime_epCoinTime_ROC1","P_RF_tdcTime","P_hod_fpHitsTime","P_gtr_beta","P_gtr_xp","P_gtr_yp","P_gtr_p","P_gtr_dp","P_cal_etotnorm","P_cal_etottracknorm","P_aero_npeSum","P_aero_xAtAero","P_aero_yAtAero","P_hgcer_npeSum","P_hgcer_xAtCer","P_hgcer_yAtCer","MMpi","MMK","MMp","H_RF_Dist","P_RF_Dist","Q2","W","epsilon","MandelT","MandelU","ph_q"]
     # Need to create a dict for all the branches we grab
     data = {}
-
-    for d in (COIN_Pion_Data, COIN_Kaon_Data, COIN_Proton_Data): # Convert individual dictionaries into a "dict of dicts"
-        data.update(d)
-        data_keys = list(data.keys()) # Create a list of all the keys in all dicts added above, each is an array of data
+    data.update(COIN_Kaon_Data)
+    data_keys = list(data.keys()) # Create a list of all the keys in all dicts added above, each is an array of data
 
     for i in range (0, len(data_keys)):
-        if("Pion" in data_keys[i]):
-            DFHeader=list(COIN_Pion_Data_Header)
-        elif("Kaon" in data_keys[i]):
+        if("Kaon" in data_keys[i]):
             DFHeader=list(COIN_Kaon_Data_Header)
-        elif("Proton" in data_keys[i]):
-            DFHeader=list(COIN_Proton_Data_Header)
         else:
             continue
         if (i == 0):
