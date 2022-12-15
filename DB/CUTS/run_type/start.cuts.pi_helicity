@@ -1,0 +1,23 @@
+##############
+# COIN picut #
+##############
+#
+#ACP Nov 9 2022
+#This has no PID cuts but splits the helicities
+#For determination of PID cuts to apply later
+#
+coin_epi_cut_all_noRF = misc.starttime+accept.delta
+#
+# positive helicity
+coin_epi_cut_all_RF_pos = coin_time.SHMS_Pi_RF+misc.starttime+misc.hel_pos+accept.delta+accept.h_pfp+accept.p_pfp
+#
+coin_epi_cut_prompt_RF_pos = coin_time.Coin_Pion_Prompt+coin_time.SHMS_Pi_RF+misc.starttime+misc.hel_pos+accept.delta+accept.h_pfp+accept.p_pfp
+#
+coin_epi_cut_rand_RF_pos = coin_time.Coin_Pion_Rand+coin_time.SHMS_Pi_RF+misc.starttime+misc.hel_pos+accept.delta+accept.h_pfp+accept.p_pfp
+#
+# Negative helicity
+coin_epi_cut_all_RF_neg = coin_time.SHMS_Pi_RF+misc.starttime+misc.hel_neg+accept.delta+accept.h_pfp+accept.p_pfp
+#
+coin_epi_cut_prompt_RF_neg = coin_time.Coin_Pion_Prompt+coin_time.SHMS_Pi_RF+misc.starttime+misc.hel_neg+accept.delta+accept.h_pfp+accept.p_pfp
+#
+coin_epi_cut_rand_RF_neg = coin_time.Coin_Pion_Rand+coin_time.SHMS_Pi_RF+misc.starttime+misc.hel_neg+accept.delta+accept.h_pfp+accept.p_pfp
